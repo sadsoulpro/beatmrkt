@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeatWave | Beat Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#0A0A0B',
+              surface: '#1F1F21',
+              neon: '#7664dd',
+              neonDim: 'rgba(118, 100, 221, 0.1)',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #030303;
+        color: #ffffff;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden; /* Prevent scrollbar from rotating background */
+      }
+
+      /* Primary Iridescent Layer (Rotating Conic Gradient) */
+      body::before {
+        content: "";
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        z-index: -2;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          rgba(118, 100, 221, 0.15) 45deg,
+          transparent 90deg,
+          rgba(57, 255, 20, 0.08) 135deg,
+          transparent 180deg,
+          rgba(118, 100, 221, 0.15) 225deg,
+          transparent 270deg,
+          rgba(57, 255, 20, 0.08) 315deg,
+          transparent 360deg
+        );
+        filter: blur(80px);
+        animation: spin 40s linear infinite;
+        opacity: 0.8;
+      }
+
+      /* Secondary Layer (Floating Orbs for depth) */
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(118, 100, 221, 0.12) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(57, 255, 20, 0.06) 0%, transparent 50%);
+        animation: pulse-bg 15s ease-in-out infinite alternate;
+      }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse-bg {
+        0% { transform: scale(1); opacity: 0.7; }
+        100% { transform: scale(1.1); opacity: 1; }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0A0A0B; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #444; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "lucide-react": "https://esm.sh/lucide-react@0.263.1",
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
